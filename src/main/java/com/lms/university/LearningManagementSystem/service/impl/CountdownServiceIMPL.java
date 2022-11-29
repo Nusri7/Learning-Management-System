@@ -15,5 +15,6 @@ public class CountdownServiceIMPL implements CountdownService {
     @Autowired
     private ModelMapper modelMapper;
 
-
+    @Autowired
+    private CountdownMappers countdownMappers;
 }
