@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Data
 
 @Entity
+@Table(name = "user")
 public class User {
     @Id
     @Column(name = "user_id", length = 40)
@@ -27,6 +28,6 @@ public class User {
     private String password;
 
     @Column(name = "active_state", length = 40, columnDefinition = "TINYINT default 1")
-    private String activeState;
+    private boolean activeState;
 
 }

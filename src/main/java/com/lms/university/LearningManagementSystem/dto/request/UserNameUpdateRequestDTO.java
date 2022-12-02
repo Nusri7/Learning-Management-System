@@ -1,18 +1,13 @@
-package com.lms.university.LearningManagementSystem.dto;
+package com.lms.university.LearningManagementSystem.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserDTO {
+public class UserNameUpdateRequestDTO {
     private int userId;
     private String name;
-    private String email;
-    private String password;
-    private boolean activeState;
 }

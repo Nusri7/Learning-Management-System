@@ -15,6 +15,5 @@ public class NotificationServiceIMPL implements NotificationService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private NotificationMappers notificationMappers;
+
 }

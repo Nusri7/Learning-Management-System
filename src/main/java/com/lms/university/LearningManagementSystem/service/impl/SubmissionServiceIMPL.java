@@ -15,6 +15,5 @@ public class SubmissionServiceIMPL implements SubmissionService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private SubmissionMappers submissionMappers;
+
 }

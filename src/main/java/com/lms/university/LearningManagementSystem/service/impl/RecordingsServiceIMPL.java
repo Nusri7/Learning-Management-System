@@ -15,6 +15,5 @@ public class RecordingsServiceIMPL implements RecordingsService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private RecordingsMappers recordingsMappers;
+
 }

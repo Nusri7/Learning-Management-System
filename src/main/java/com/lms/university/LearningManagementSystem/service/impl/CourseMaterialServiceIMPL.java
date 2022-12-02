@@ -16,6 +16,5 @@ public class CourseMaterialServiceIMPL implements CourseMaterialService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private CourseMaterialMappers courseMaterialMappers;
+
 }
