@@ -11,11 +11,12 @@ import javax.persistence.*;
 @Data
 
 @Entity
+@Table(name = "events")
 public class Events {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "event_id", length =40)
-    private int eventID;
+    private int eventId;
 
     @Column(name = "main_title", length =60, nullable = false)
     private String mainTitle;

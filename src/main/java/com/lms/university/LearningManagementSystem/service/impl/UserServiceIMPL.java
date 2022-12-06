@@ -1,9 +1,8 @@
 package com.lms.university.LearningManagementSystem.service.impl;
 
-
 import com.lms.university.LearningManagementSystem.dto.UserDTO;
 import com.lms.university.LearningManagementSystem.dto.request.UserNameUpdateRequestDTO;
-import com.lms.university.LearningManagementSystem.dto.request.UserSaveRequestDTO;
+import com.lms.university.LearningManagementSystem.dto.request.UserPasswordUpdateDTO;
 import com.lms.university.LearningManagementSystem.entity.User;
 import com.lms.university.LearningManagementSystem.exceptions.EntryDuplicateException;
 import com.lms.university.LearningManagementSystem.exceptions.NotFoundException;
@@ -25,14 +24,13 @@ public class UserServiceIMPL implements UserService {
     private ModelMapper modelMapper;
 
 
-
     public UserDTO userById(int id) {
         Optional<User> user = userRepo.findById(id);
         if (user.isPresent()) {
             UserDTO userDTO = modelMapper.map(user.get(), UserDTO.class);
             return userDTO;
         }
-        throw new NotFoundException("User not found fot this ID!!");
+        throw new NotFoundException("User not found for this ID!!");
     }
 
     @Override
@@ -66,6 +64,15 @@ public class UserServiceIMPL implements UserService {
         if(userRepo.existsById(userNameUpdateRequestDTO.getUserId())){
             userRepo.updateUserName(userNameUpdateRequestDTO.getName(), userNameUpdateRequestDTO.getUserId());
 
+        }else {
+            throw new NotFoundException("User not found");
+        }
+    }
+
+    @Override
+    public void updatePassword(UserPasswordUpdateDTO userPasswordUpdateDTO) {
+        if(userRepo.existsById(userPasswordUpdateDTO.getUserId())){
+            userRepo.updatePassword(userPasswordUpdateDTO.getPassword(),userPasswordUpdateDTO.getUserId());
         }else {
             throw new NotFoundException("User not found");
         }

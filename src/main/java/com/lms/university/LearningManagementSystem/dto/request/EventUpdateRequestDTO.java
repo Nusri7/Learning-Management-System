@@ -1,15 +1,15 @@
-package com.lms.university.LearningManagementSystem.dto;
+package com.lms.university.LearningManagementSystem.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class EventDTO {
 
+public class EventUpdateRequestDTO {
+    private int eventId;
     private String mainTitle;
     private String subTitle;
     private String description;

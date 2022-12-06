@@ -2,6 +2,7 @@ package com.lms.university.LearningManagementSystem.controler;
 
 import com.lms.university.LearningManagementSystem.dto.UserDTO;
 import com.lms.university.LearningManagementSystem.dto.request.UserNameUpdateRequestDTO;
+import com.lms.university.LearningManagementSystem.dto.request.UserPasswordUpdateDTO;
 import com.lms.university.LearningManagementSystem.dto.request.UserSaveRequestDTO;
 import com.lms.university.LearningManagementSystem.service.UserService;
 import com.lms.university.LearningManagementSystem.utill.StandardResponse;
@@ -14,7 +15,7 @@ import static org.aspectj.weaver.tools.cache.SimpleCacheFactory.path;
 
 @RestController
 @RequestMapping("api/v1/user")
-@CrossOrigin
+@CrossOrigin("http://localhost:3000/")
 public class UserController {
 
     @Autowired
@@ -49,6 +50,15 @@ public class UserController {
     @PutMapping(path = "/update-user-name")
     public ResponseEntity<StandardResponse> updateUserName(@RequestBody UserNameUpdateRequestDTO userNameUpdateRequestDTO){
         userService.updateUserName(userNameUpdateRequestDTO);
+
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"Successfully Updated!!",null),HttpStatus.OK
+        );
+    }
+
+    @PutMapping(path = "/update-password")
+    public ResponseEntity<StandardResponse> updatePassword(@RequestBody UserPasswordUpdateDTO userPasswordUpdateDTO){
+        userService.updatePassword(userPasswordUpdateDTO);
 
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200,"Successfully Updated!!",null),HttpStatus.OK
