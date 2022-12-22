@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,7 +22,7 @@ public class User {
     @Column(name = "name", length = 40, nullable=false)
     private String name;
 
-    @Column(name = "email", length = 40, nullable=false, unique = true)
+    @Column(name = "email", length = 40, unique = true)
     private String email;
 
     @Column(name = "password", length = 40, nullable=false)
@@ -29,5 +30,8 @@ public class User {
 
     @Column(name = "active_state", length = 40, columnDefinition = "TINYINT default 0")
     private boolean activeState;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Todo> todo;
 
 }

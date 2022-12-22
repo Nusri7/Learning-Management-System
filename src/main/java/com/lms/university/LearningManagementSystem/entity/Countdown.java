@@ -11,18 +11,22 @@ import javax.persistence.*;
 @Data
 
 @Entity
+@Table(name = "countdown")
 public class Countdown {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "countdown_id", length = 40)
-    private int countdown;
+    private int countdownId;
 
-    @Column(name = "days", nullable = false)
-    private int days;
+    @Column(name = "event_name")
+    private String eventName;
 
-    @Column(name = "hours", nullable = false)
-    private int hours;
+    @Column(name = "day", nullable = false)
+    private int day;
 
-    @Column(name = "minutes", nullable = false)
-    private int minutes;
+    @Column(name = "month", nullable = false)
+    private String month;
+
+    @Column(name = "year", nullable = false)
+    private int year;
 }

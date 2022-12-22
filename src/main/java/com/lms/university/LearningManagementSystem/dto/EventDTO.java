@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class EventDTO {
-
+    private int eventId;
     private String mainTitle;
     private String subTitle;
     private String description;

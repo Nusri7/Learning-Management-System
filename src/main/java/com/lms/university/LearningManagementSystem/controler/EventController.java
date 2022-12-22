@@ -10,8 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("api/vi/event")
+@RequestMapping("api/v1/event")
 @CrossOrigin("http://localhost:3000/")
 public class EventController {
 
@@ -34,5 +36,13 @@ public class EventController {
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200,"successfully updated event",id), HttpStatus.OK
         );
+    }
+
+    @GetMapping(path="/get-events")
+    public ResponseEntity<StandardResponse> getEvents(){
+        List<EventDTO> eventDTOList = eventsService.getEvents();
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"success",eventDTOList), HttpStatus.OK);
+
     }
 }

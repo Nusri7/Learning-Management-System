@@ -14,12 +14,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class EventsServiceIMPL implements EventsService {
     @Autowired
     private EventsRepo eventsRepo;
+
+    @Autowired
+    private EventsMappers eventsMappers;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -44,6 +48,13 @@ public class EventsServiceIMPL implements EventsService {
             throw new NotFoundException("User not found");
         }
 
+
+    }
+
+    @Override
+    public List<EventDTO> getEvents() {
+        List<Events> getEvents = eventsRepo.findAll();
+        return eventsMappers.listEntityToListDto(getEvents);
 
     }
 }

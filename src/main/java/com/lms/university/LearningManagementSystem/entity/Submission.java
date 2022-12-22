@@ -15,7 +15,7 @@ public class Submission {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "submission_id", length = 40)
-    private String submissionId;
+    private int submissionId;
 
     @Column(name = "title", length =60, nullable = false)
     private String title;

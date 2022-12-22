@@ -3,6 +3,7 @@ package com.lms.university.LearningManagementSystem.service.impl;
 import com.lms.university.LearningManagementSystem.dto.UserDTO;
 import com.lms.university.LearningManagementSystem.dto.request.UserNameUpdateRequestDTO;
 import com.lms.university.LearningManagementSystem.dto.request.UserPasswordUpdateDTO;
+import com.lms.university.LearningManagementSystem.entity.Events;
 import com.lms.university.LearningManagementSystem.entity.User;
 import com.lms.university.LearningManagementSystem.exceptions.EntryDuplicateException;
 import com.lms.university.LearningManagementSystem.exceptions.NotFoundException;
@@ -35,7 +36,7 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public String addUser(UserDTO userDTO) {
-        User user = new User(
+        /*User user = new User(
                 userDTO.getUserId(),
                 userDTO.getName(),
                 userDTO.getEmail(),
@@ -46,8 +47,16 @@ public class UserServiceIMPL implements UserService {
             userRepo.save(user);
             return user.getName() + " Saved";
         }
-
-        throw new EntryDuplicateException("User already exist!!");
+        else {
+            throw new EntryDuplicateException("User already exist!!");
+        }*/
+        User user = modelMapper.map(userDTO, User.class);
+        if (!userRepo.existsById(user.getUserId())) {
+            userRepo.save(user);
+            return user.getName() + " Saved";
+        }else{
+            throw new EntryDuplicateException("Duplicated id");
+        }
     }
 
     @Override

@@ -1,17 +1,17 @@
 package com.lms.university.LearningManagementSystem.dto;
 
+import com.lms.university.LearningManagementSystem.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SubmissionDTO {
-    private int submissionId;
-    private String title;
-    private String description;
-    private String submissionLink;
+
+
+public class TodoDTO {
+    private int todoId;
+    private String todoName;
+    private int user;
 }
