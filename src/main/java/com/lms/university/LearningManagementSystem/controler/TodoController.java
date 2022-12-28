@@ -1,7 +1,8 @@
 package com.lms.university.LearningManagementSystem.controler;
 
-import com.lms.university.LearningManagementSystem.dto.SubmissionDTO;
+
 import com.lms.university.LearningManagementSystem.dto.TodoDTO;
+import com.lms.university.LearningManagementSystem.dto.response.TodoIdResponseDTO;
 import com.lms.university.LearningManagementSystem.service.TodoService;
 import com.lms.university.LearningManagementSystem.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("api/v1/todo")
 public class TodoController {
     @Autowired
@@ -23,7 +24,7 @@ public class TodoController {
         todoService.addTodo(todoDTO);
 
         return  new ResponseEntity<StandardResponse>(
-                new StandardResponse(201,"Successfully added",null), HttpStatus.CREATED
+                new StandardResponse(201,"Successfully added",todoDTO), HttpStatus.CREATED
         );
     }
     @GetMapping(path="/get-todo/{id}")
@@ -34,4 +35,24 @@ public class TodoController {
                 new StandardResponse(200, "success", todoDTOS), HttpStatus.OK
         );
     }
+
+    @DeleteMapping(path = "/delete-todo/{id}")
+    public ResponseEntity<StandardResponse> removeTodo(@PathVariable(value = "id") int id){
+        todoService.removeTodo(id);
+
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"Successfully Deleted!!",null),HttpStatus.OK
+        );
+
+    }
+
+    @GetMapping(path="/get-last-todo")
+    public ResponseEntity<StandardResponse> getLastTodo() {
+        TodoIdResponseDTO todoDTO = todoService.getLastTodo();
+
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200, "success", todoDTO), HttpStatus.OK
+        );
+    }
+
 }

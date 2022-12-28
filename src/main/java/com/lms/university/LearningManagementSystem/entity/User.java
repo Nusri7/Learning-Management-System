@@ -33,5 +33,4 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Todo> todo;
-
 }
