@@ -82,14 +82,15 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>${org.mapstruct.version}</version>
+			<version>1.4.2.Final</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
-			<version>${org.mapstruct.version}</version>
-			<scope>provided</scope>
+			<version>1.4.2.Final</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
