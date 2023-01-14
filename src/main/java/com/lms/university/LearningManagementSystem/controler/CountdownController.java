@@ -1,6 +1,7 @@
 package com.lms.university.LearningManagementSystem.controler;
 
 import com.lms.university.LearningManagementSystem.dto.CountDownDTO;
+import com.lms.university.LearningManagementSystem.dto.request.UserStateUpdateDTO;
 import com.lms.university.LearningManagementSystem.service.CountdownService;
 import com.lms.university.LearningManagementSystem.utill.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,26 @@ public class CountdownController {
 
     @GetMapping(path = "/get-countdown/{id}")
     public ResponseEntity<StandardResponse> getCountDownById(@PathVariable(value = "id") int id){
-        CountDownDTO countDownDTO = countdownService.getCountDownById(id);
+        String countDown = countdownService.getCountDownById(id);
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"Successfully added", countDown), HttpStatus.CREATED
+        );
+    }
+
+    @GetMapping(path = "/get-countdown-dto/{id}")
+    public ResponseEntity<StandardResponse> getCountDownDTOById(@PathVariable(value = "id") int id){
+        CountDownDTO countDownDTO = countdownService.getCountDownByDTOId(id);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(200,"Successfully added", countDownDTO), HttpStatus.CREATED
+        );
+    }
+
+    @PutMapping(path = "/update-count-down")
+    public ResponseEntity<StandardResponse> updateCountdown(@RequestBody CountDownDTO countDownDTO){
+        countdownService.updateCountdown(countDownDTO);
+
+        return new ResponseEntity<StandardResponse>(
+                new StandardResponse(200,"Successfully Updated!!",null),HttpStatus.OK
         );
     }
 }

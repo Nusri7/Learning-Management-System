@@ -5,5 +5,9 @@ import com.lms.university.LearningManagementSystem.dto.CountDownDTO;
 public interface CountdownService {
     void addCountdown(CountDownDTO countDownDTO);
 
-    CountDownDTO getCountDownById(int id);
+    String getCountDownById(int id);
+
+    CountDownDTO getCountDownByDTOId(int id);
+
+    void updateCountdown(CountDownDTO countDownDTO);
 }

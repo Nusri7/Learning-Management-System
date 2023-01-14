@@ -32,12 +32,31 @@ public class CountdownServiceIMPL implements CountdownService {
     }
 
     @Override
-    public CountDownDTO getCountDownById(int id) {
+    public String getCountDownById(int id) {
+        Optional<Countdown> countdown = countdownRepo.findById(id);
+        if (countdown.isPresent()) {
+            return countdown.get().getMonth() + "," + countdown.get().getDay() + "," + countdown.get().getYear();
+        }
+        throw new NotFoundException("User not found for this ID!!");
+    }
+
+    @Override
+    public CountDownDTO getCountDownByDTOId(int id) {
         Optional<Countdown> countdown = countdownRepo.findById(id);
         if (countdown.isPresent()) {
             return modelMapper.map(countdown.get(), CountDownDTO.class);
         }
         throw new NotFoundException("User not found for this ID!!");
+    }
+
+    @Override
+    public void updateCountdown(CountDownDTO countDownDTO) {
+        if(countdownRepo.existsById(countDownDTO.getCountdownId())){
+            countdownRepo.updateCountdown(countDownDTO.getDay(),countDownDTO.getMonth(),countDownDTO.getYear(), countDownDTO.getEventName(),countDownDTO.getCountdownId());
+
+        }else {
+            throw new NotFoundException("User not found");
+        }
     }
 
 }
