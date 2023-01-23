@@ -13,6 +13,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Learning-Management-System</name>
 	<description>project for Spring Boot</description>
+	<groupId>in.bushansirgur</groupId>
+	<artifactId>image-upload-download</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>image-upload-download</name>
+	<description>Spring boot image upload and download project</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
